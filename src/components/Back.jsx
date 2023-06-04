@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 import { PropTypes } from 'prop-types';
 
-function GoBack({ to, children }) {
+function Back({ to, children }) {
   return (
     <Link to={to}>
       <HiArrowNarrowLeft size="18" />
@@ -12,8 +12,8 @@ function GoBack({ to, children }) {
   );
 }
 
-GoBack.propTypes = {
+Back.propTypes = {
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   children: PropTypes.node,
 };
-export default GoBack;
+export default Back;

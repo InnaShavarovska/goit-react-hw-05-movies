@@ -1,16 +1,17 @@
 import React from 'react';
 import { fetchCastFilmById } from '../services/api';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-function MovieCast() {
+function Cast() {
   const [cast, setCast] = useState([]);
-  const { movieId } = useParams();
+
+  const params = useParams();
+  const id = params.movieId;
 
   useEffect(() => {
-    fetchCastFilmById(movieId).then(result => setCast(result));
-  }, [movieId]);
+    fetchCastFilmById(id).then(result => setCast(result));
+  }, [id]);
 
   return (
     <ul>
@@ -25,4 +26,4 @@ function MovieCast() {
   );
 }
 
-export default MovieCast;
+export default Cast;

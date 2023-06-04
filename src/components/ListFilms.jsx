@@ -5,6 +5,7 @@ import { fetchFilms } from '../services/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useLocation } from 'react-router-dom';
+import css from './ListFilms.module.css';
 
 function ListFilms({ filter = '' }) {
   const [films, setfilms] = useState([]);
@@ -18,9 +19,9 @@ function ListFilms({ filter = '' }) {
   }, [filter]);
 
   return (
-    <ul>
+    <ul className={css.list}>
       {films.map(film => (
-        <li key={film.id}>
+        <li key={film.id} className={css.link}>
           <Link to={`/movies/${film.id}`} state={location}>
             {film.title}
           </Link>

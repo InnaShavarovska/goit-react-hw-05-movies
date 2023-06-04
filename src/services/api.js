@@ -11,7 +11,7 @@ const fetchFilms = async (filmName, page = 1) => {
     : `${URL}/trending/all/day?api_key=${KEY}&page=${page}`;
 
   const response = await axios.get(request);
-  const takeInfo = results => {
+  const info = results => {
     return results
       .filter(
         ({ poster_path, genre_ids, title, original_title }) =>
@@ -23,7 +23,7 @@ const fetchFilms = async (filmName, page = 1) => {
       }));
   };
 
-  return takeInfo(response.data.results);
+  return info(response.data.results);
 };
 
 const fetchFilmById = async filmId => {
@@ -50,7 +50,6 @@ const fetchFilmById = async filmId => {
   };
 };
 
-// Request about casting
 const fetchCastFilmById = async filmId => {
   const response = await axios.get(
     `${URL}/movie/${filmId}/credits?api_key=${KEY}&language=en-US`

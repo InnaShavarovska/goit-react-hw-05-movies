@@ -1,10 +1,8 @@
-import { Suspense } from 'react';
-import GoBack from '../../components/GoBack';
+import { useState, useEffect, Suspense } from 'react';
+import Back from '../../components/Back';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import { fetchFilmById } from '../../services/api';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
+import Notiflix from 'notiflix';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../../components/Loader';
 
@@ -18,7 +16,9 @@ function MovieDetails() {
     fetchFilmById(movieId)
       .then(result => setFilm(result))
       .catch(() =>
-        toast.error("We can't find any information about your film!")
+        Notiflix.Notify.failure(
+          'Sorry, there are any information about this film'
+        )
       );
   }, [movieId]);
 
@@ -26,7 +26,7 @@ function MovieDetails() {
 
   return (
     <section>
-      <GoBack to={location.state ? location.state : '/movies'}>Go back</GoBack>
+      <Back to={location.state ? location.state : '/movies'}>Back</Back>
       <div>
         <img src={poster_path} alt={title} />
         <div>

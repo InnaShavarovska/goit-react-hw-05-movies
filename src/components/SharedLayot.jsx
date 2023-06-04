@@ -2,19 +2,24 @@ import React, { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Loader from './Loader';
+import css from './SharedLayot.module.css';
 
-function SharedLayout() {
+function Layout() {
   return (
     <>
       <ToastContainer />
       <header>
         <nav>
-          <ul>
+          <ul className={css.list}>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" className={css.link}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/movies">Movies</NavLink>
+              <NavLink to="/movies" className={css.link}>
+                Movies
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -28,4 +33,4 @@ function SharedLayout() {
   );
 }
 
-export default SharedLayout;
+export default Layout;
