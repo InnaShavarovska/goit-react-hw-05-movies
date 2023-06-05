@@ -5,12 +5,14 @@ import { fetchFilmById } from '../../services/api';
 import Notiflix from 'notiflix';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../../components/Loader';
+import { useRef } from 'react';
 
 function MovieDetails() {
   const { movieId } = useParams();
   const [film, setFilm] = useState({});
 
   const location = useLocation();
+  const back = useRef(location.state?.from ?? '/home');
 
   useEffect(() => {
     fetchFilmById(movieId)
@@ -26,7 +28,7 @@ function MovieDetails() {
 
   return (
     <section>
-      <Back to={location.state ? location.state : '/movies'}>Back</Back>
+      <Back to={back.current}>Back</Back>
       <div>
         <img src={poster_path} alt={title} />
         <div>

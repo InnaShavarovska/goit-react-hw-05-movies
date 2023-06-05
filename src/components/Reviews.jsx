@@ -21,7 +21,7 @@ function Reviews() {
           </li>
         ))}
       </ul>
-      {reviews.length === 0 && <p>We don't have any reviews for this movie</p>}
+      {reviews.length === 0 && <p>There are any reviews for this movie</p>}
     </>
   );
 }
