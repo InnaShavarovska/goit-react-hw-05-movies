@@ -22,7 +22,14 @@ function ListFilms({ filter = '' }) {
     <ul className={css.list}>
       {films.map(film => (
         <li key={film.id} className={css.link}>
-          <Link to={`/movies/${film.id}`} state={location}>
+          <Link
+            to={
+              location.pathname === `/`
+                ? `movies/${film.id.toString()}`
+                : `${film.id.toString()}`
+            }
+            state={{ from: location }}
+          >
             {film.title}
           </Link>
         </li>
